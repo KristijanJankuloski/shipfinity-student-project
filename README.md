@@ -1,2 +1,2 @@
-# shipfinity-student-project
+# Shipfinity
 Shipfinity. Drop shipping website from SEDC-G1 student project.
