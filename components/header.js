@@ -1,27 +1,41 @@
 import { basePath } from '../helpers/constants.js';
 
-const headerContainer = document.createElement('div');
-headerContainer.className = "p-3 bg-dark text-white";
+const headerContainer = document.createElement('nav');
+headerContainer.className = "navbar navbar-expand-lg navbar-dark bg-dark";
 headerContainer.innerHTML = `
-<div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="${basePath}/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none pe-3">
-            <h2>Shipfinity</h2>
-        </a>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="${basePath}/"><h3>Shipfinity</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="${basePath}/" class="nav-link px-2 text-white">Home</a></li>
-            <li><a href="${basePath}/sale.html" class="nav-link px-2 text-white">Sale</a></li>
-            <li><a href="${basePath}/categories/categories.html" class="nav-link px-2 text-white">Categories</a></li>
-            <li><a href="${basePath}/contact.html" class="nav-link px-2 text-white">Contact</a></li>
-            <li><a href="${basePath}/about.html" class="nav-link px-2 text-white">About</a></li>
+      <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="${basePath}/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="${basePath}/Sale.html">Sale</a>
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown05">
+          <li><a class="dropdown-item" href="${basePath}/categories/smart_lights.html">Smart Lights</a></li>
+          <li><a class="dropdown-item" href="${basePath}/categories/smart_plugs.html">Smart Plugs</a></li>
+          <li><a class="dropdown-item" href="${basePath}/categories/smart_speakers.html">Smart Speakers</a></li>
+          <li><a class="dropdown-item" href="${basePath}/categories/smart_thermostats.html">Smart Thermostats</a></li>
+          <li><a class="dropdown-item" href="${basePath}/categories/wifi_extenders.html">WiFi Extenders</a></li>
+          </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="${basePath}/Contact.html">Contact</a>
+          </li>
         </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" action="${basePath}/search.html" method="get">
-            <input type="search" class="form-control form-control-dark me-2" placeholder="Search..." aria-label="Search" name="search">
-            <input type="submit" class="btn btn-primary" value="Search">
+        <form class="d-flex" action="${basePath}/search.html" method="get">
+          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
+          <input class="btn btn-primary" type="submit" value="Search">
         </form>
-    </div>
-</div>`;
+      </div>
+    </div>`;
 
 export default headerContainer;
