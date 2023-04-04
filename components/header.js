@@ -15,7 +15,7 @@ headerContainer.innerHTML = `
             <a class="nav-link active" aria-current="page" href="${basePath}/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${basePath}/Sale.html">Sale</a>
+            <a class="nav-link" href="${basePath}/sale.html">Sale</a>
           </li>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
@@ -28,7 +28,7 @@ headerContainer.innerHTML = `
           </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${basePath}/Contact.html">Contact</a>
+            <a class="nav-link" href="${basePath}/contact.html">Contact</a>
           </li>
         </ul>
         <form class="d-flex" action="${basePath}/search.html" method="get">
