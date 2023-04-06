@@ -1,3 +1,3 @@
-const basePath = "/shipfinity-student-project";
+const basePath = "";
 
 export { basePath };
