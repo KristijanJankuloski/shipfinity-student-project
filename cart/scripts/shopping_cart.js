@@ -7,6 +7,7 @@ document.getElementById("footer").appendChild(footerContainer);
 const itemContainer = document.getElementById("itemsContainer");
 
 const shoppingCard = document.createElement("div");
+
 shoppingCard.innerHTML = `
 <div class="card rounded-3 mb-4">
             <div class="card-body p-4">
@@ -43,5 +44,28 @@ shoppingCard.innerHTML = `
 `;
 
 
+ 
+
+function getCartProducts(shoppingCard) {
+    let products = [];
+    for (let item of shoppingCard) {
+      let product = {
+        name: item.product,
+        quantity: item.quantity,
+        price: item.price
+      };
+      products.push(product);
+    }
+    products.appendChild(shoppingCard);
+    return products;
+
+  }
+
+  getCartProducts();
 
 
+  document.querySelector("#ms-3").addEventListener('click', e =>{
+    e.preventDefault();
+    window.location.href = "checkout.html";
+
+  });
