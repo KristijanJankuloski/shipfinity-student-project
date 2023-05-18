@@ -1,15 +1,20 @@
+import { addToCart } from "../helpers/session_cart.js";
 const cardComponent = document.createElement('div');
 
-function showDetails(){
-    
-}
 
-function addToCart(){
-    
-}
 
 
 function productCard(Product){
+
+  function showDetails(Id){
+    
+  }
+
+  function Add(){
+
+  addToCart(Product)
+  
+  }
 cardComponent.innerHTML = `
 <div class="card" style="width: 18rem; margin-left: 20px;">
   <img src="${Product.imageUrl}" class="card-img-top" alt="...">
@@ -23,7 +28,7 @@ cardComponent.innerHTML = `
   </ul>
   <div class="card-body">
   <a href="#" class="btn btn-primary btnDetails" onclick="showDetails()">Details</a>
-  <a href="#" class="btn btn-primary btnAddToCard" onclick="addToCart()">Add To Card</a>
+  <a href="#" class="btn btn-primary btnAddToCard" onclick="Add()">Add To Card</a>
   </div>
   </div>
 `
