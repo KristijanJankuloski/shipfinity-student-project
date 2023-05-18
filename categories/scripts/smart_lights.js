@@ -14,7 +14,7 @@ function getProducts() {
       "name": "Smart Light Bulb",
       "description": "Control your lights from anywhere with this smart light bulb.",
       "price": 19.99,
-      "imageUrl": "https://cdn.thewirecutter.com/wp-content/media/2022/08/smart-plug-2048px-6061.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/71YDobkreZL._AC_SX679_.jpg",
       "category": "light"
     },
     {
@@ -22,7 +22,7 @@ function getProducts() {
       "name": "Smart LED Strip",
       "description": "Add ambiance to any room with this versatile smart LED strip.",
       "price": 39.99,
-      "imageUrl": "###",
+      "imageUrl": "https://m.media-amazon.com/images/I/61F09kEGfaL._AC_SX569_.jpg",
       "category": "light"
     },
     {
@@ -30,7 +30,7 @@ function getProducts() {
       "name": "Smart Ceiling Light",
       "description": "Control the brightness and color of this smart ceiling light with your voice or phone.",
       "price": 79.99,
-      "imageUrl": "###",
+      "imageUrl": "https://m.media-amazon.com/images/I/71VQGctDrCL._AC_SX679_.jpg",
       "category": "light"
     },
     {
@@ -38,7 +38,7 @@ function getProducts() {
       "name": "Smart Desk Lamp",
       "description": "Adjust the brightness and color temperature of this smart desk lamp with your voice or phone.",
       "price": 49.99,
-      "imageUrl": "###",
+      "imageUrl": "https://m.media-amazon.com/images/I/617DcLygQzL._AC_SX569_.jpg",
       "category": "light"
     }
   ]

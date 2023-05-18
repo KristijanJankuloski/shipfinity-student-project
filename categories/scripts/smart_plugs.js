@@ -14,7 +14,7 @@ function getProducts() {
       "name": "Smart Plug",
       "description": "Turn any device into a smart device with this easy-to-use smart plug.",
       "price": 24.99,
-      "imageUrl": "https://example.com/images/smart-plug.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/61YF7Ft7RRL.__AC_SY445_SX342_QL70_ML2_.jpg",
       "category": "plug"
     },
     {
@@ -22,7 +22,7 @@ function getProducts() {
       "name": "Smart Power Strip",
       "description": "Control multiple devices with this smart power strip, which features individual outlets for each device.",
       "price": 49.99,
-      "imageUrl": "https://example.com/images/smart-power-strip.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/418XTw0UpCL._AC_SY679_.jpg",
       "category": "plug"
     },
     {
@@ -30,7 +30,7 @@ function getProducts() {
       "name": "Smart Outlet",
       "description": "This smart outlet is easy to install and allows you to control any device with your voice or phone.",
       "price": 29.99,
-      "imageUrl": "https://example.com/images/smart-outlet.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/715i7LdfOYL._AC_SX522_.jpg",
       "category": "plug"
     },
     {
@@ -38,7 +38,7 @@ function getProducts() {
       "name": "Smart Switch",
       "description": "Replace your existing light switch with this smart switch and control your lights with your voice or phone.",
       "price": 39.99,
-      "imageUrl": "https://example.com/images/smart-switch.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/616zJaDGlrL._AC_SX522_.jpg",
       "category": "plug"
     }
   ]
