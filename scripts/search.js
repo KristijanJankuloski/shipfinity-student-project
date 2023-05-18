@@ -10,18 +10,24 @@ document.getElementById("footer").appendChild(footerContainer);
 const searchString = new URLSearchParams(window.location.search);
 const keyword = searchString.get('search');
 
+
 // Find the search form and search results container
 const searchForm = document.getElementById("search-form");
 const searchResultsContainer = document.getElementById("search-results");
 
 // Add event listener to the search form
-searchForm.addEventListener("submit", (event) => {
-    // Prevent default form submission behavior
-    event.preventDefault();
-});
+// searchForm.addEventListener("submit", (event) => {
+//     // Prevent default form submission behavior
+//     event.preventDefault();
+// });
 
+const lightsJson = "../assets/smart_lights.json";
+const smartPlugsJson = "../assets/smart_plugs.json";
+const smartSpeakerJson = "../assets/smart_speakers.json";
+const smartThermostatsJson = "../assets/smart_thermostats.json";
+const wifiExtendersJson = "../assets/wifi_extenders.json";
 // Fetch call
-const fileNames = ['smart_lights.json', 'smart_plugs.json', 'smart_speaker.json', 'smart_thermostats.json', 'wifi_extenders'];
+const fileNames = [lightsJson, smartPlugsJson, smartSpeakerJson, smartThermostatsJson, wifiExtendersJson];
 // const fileNames = `${basePath}/products`;
 
 fileNames.forEach(fileName =>
@@ -57,27 +63,50 @@ function renderSearchResults(results){
 }
 
 // Function to perform the search
-function performSearch(){
+// function performSearch(){
+//     // const fileNames = `${basePath}/products`;
+//     const fileNames = [lightsJson, smartPlugsJson, smartSpeakerJson, smartThermostatsJson, wifiExtendersJson];
+//     const promises = fileNames.map(fileName => fetch(`./${fileName}`)
+//     .then(res => res.json()));
+//     // console.log(res);
+
+//     Promise.all(promises)
+//     .then(data => {
+//         const results = data.reduce((accumulator, currentValue) => accumulator.concat(currentValue), []);
+
+//         const filteredResults = results.filter(result => {
+//             return result.name.toLowerCase().include(keyword.toLowerCase());
+//         });
+//         renderSearchResults(filteredResults);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         searchResultsContainer.innerHTML = "<p> Error fetching results</p>";
+//     });
+// }
+function performSearch() {
     // const fileNames = `${basePath}/products`;
-    const fileNames = ['smart_lights.json', 'smart_plugs.json', 'smart_speaker.json', 'smart_thermostats.json', 'wifi_extenders.json'];
-    const promises = fileNames.map(fileName => fetch(`./${fileName}`)
-    .then(res => res.json()));
+    const fileNames = [lightsJson, smartPlugsJson, smartSpeakerJson, smartThermostatsJson, wifiExtendersJson];
+    const promises = fileNames.map(fileName => fetch(`./${fileName}`).then(res => res.json()));
     // console.log(res);
-
+  
     Promise.all(promises)
-    .then(data => {
+      .then(data => {
         const results = data.reduce((accumulator, currentValue) => accumulator.concat(currentValue), []);
-
+  
+        const keyword = document.getElementById("search-input").currentValue; // Replace with the actual keyword you want to search for
+  
         const filteredResults = results.filter(result => {
-            return result.name.toLowerCase().include(keyword.toLowerCase());
+          return result.name.toLowerCase().includes(keyword.value.toLowerCase());
         });
         renderSearchResults(filteredResults);
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.log(err);
         searchResultsContainer.innerHTML = "<p> Error fetching results</p>";
-    });
-}
+      });
+  }
+  
 
 searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
