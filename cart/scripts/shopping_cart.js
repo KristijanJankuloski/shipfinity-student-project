@@ -11,16 +11,20 @@ const clearCartBtn = document.querySelector('.clear-cart');
 const totalCartBtn = document.querySelector('.cart-total');
 
 
-let applyBtn = document.getElementById('apply');
 let proceedToPayBtn = document.getElementById('proceedToPay');
 
 function GetToCheckoutPage(){
   window.location.href = "checkout.html";
 }
-
 proceedToPayBtn.addEventListener("click", GetToCheckoutPage);
 
 let cart = [{"id": 2,
+"name": "Smart Plug",
+"description": "Turn any device into a smart device with this easy-to-use smart plug.",
+"price": 24.99,
+"imageUrl": "#",
+"category": "plug"},
+{"id": 2,
 "name": "Smart Plug",
 "description": "Turn any device into a smart device with this easy-to-use smart plug.",
 "price": 24.99,
@@ -29,22 +33,8 @@ let cart = [{"id": 2,
 
 // cart = getCart();
 
-//getting products
-// class Products {
-//     async getProducts() {
-//     try {
-//         let result = await fetch ("/assets/smart_lights.json");
-//         let data = await result.json();
-//         return data;
-//         } catch(error) {
-//         console.log(error);
-//     }
-// }
-// }
-
 //display products
-class UI {
-    displayProducts(products) {
+function displayProducts(products) {
     console.log(products);
     let result = '';
     products.forEach(product => {
@@ -54,7 +44,7 @@ class UI {
                           <div class="card-body p-4">
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img src="${product.imageUrl}"
+                                        <img src="${cart.imageUrl}"
                                       class="img-fluid rounded-3" alt="Product-image">
                                     </div>
                                   
@@ -72,7 +62,7 @@ class UI {
                                         </button>
                                     </div>
                                   <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 class="mb-0">$ ${product.price}</h5>
+                                    <h5 class="mb-0">${cart.price}</h5>
                                   </div>
                                   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                   <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -85,54 +75,27 @@ class UI {
         `;
         shoppingCart.innerHTML = result;
     });
-    }
+};
+function sumProductPrices(products) {
+  let totalPrice = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    totalPrice += products[i].price;
+  }
+
+  return totalPrice;
 }
 
-const ui = new UI();
-ui.displayProducts(cart);
-//local storage
-// class LocalStorage {
-//     static saveProducts(products) {
-//         localStorage.setItem('products', JSON.stringify(products));
-//     }
-// }
+const totalPrice = sumProductPrices(cart);
+console.log(totalPrice); 
+totalCartBtn.innerHTML = totalPrice;
 
-// document.addEventListener(, () => {
-//     const ui = new UI();
-//     const products = new Products();
 
-//     //get all products
-//     products.getProducts().then(data => console.log(data));  
-//     products.getProducts().then(products => {
-//         ui.displayProducts(products);
-//         LocalStorage.saveProducts(products)
-//     });
-// })
+displayProducts(cart);
 
-// const urls = [
-//     "http://127.0.0.1:5501/assets/smart_lights.json",
-//     "http://127.0.0.1:5501/assets/smart_plugs.json",
-//     "http://127.0.0.1:5501/assets/smart_speakers.json",
-//     "http://127.0.0.1:5501/assets/smart_thermostats.json",
-//     "http://127.0.0.1:5501/assets/wifi_extenders.json"
-// ]
-// const fetchData = async () => {
-//     try{
-//         const response = await Promise.all(urls.map(url => fetch (url).then(res => res.json())))
-//         console.log(response);
 
-//         // let products = data.products;
-//         // products = products.map(product => {
-//         //     const {name, price, id} = products;
-//         //     const image = imageURL.products;
-//         //     return {name, price, id, image}
-//         // })
-        
-//     }catch (error){
-//         console.log(error)
-//     }
-// }
-// fetchData();
+
+clearCartBtn.addEventListener('click', deleteById);
 
 
 
