@@ -11,6 +11,15 @@
     display: block;
     margin: 0 auto;  
 }
+.btn-danger{
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    width: 10%;
+    margin: 10px;
+    font-size: x-small;
+    
+}
 
 .clear-cart {
     width: 10%;

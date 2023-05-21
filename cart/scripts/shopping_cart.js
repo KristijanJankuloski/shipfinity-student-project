@@ -9,6 +9,8 @@ const itemContainer = document.getElementById("itemsContainer");
 const shoppingCart = document.getElementById("shoppingCart");
 const clearCartBtn = document.querySelector('.clear-cart');
 const totalCartBtn = document.querySelector('.cart-total');
+const quantityBtn = document.querySelector('.px-2');
+
 
 
 let proceedToPayBtn = document.getElementById('proceedToPay');
@@ -37,14 +39,14 @@ let cart = [{"id": 2,
 function displayProducts(products) {
     console.log(products);
     let result = '';
-    products.forEach(product => {
+    cart.forEach(product =>{
         result += `
         <div id="itemsContainer" class="text-center">
             <div class="card rounded-3 mb-4" id="shoppingCart">
                           <div class="card-body p-4">
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img src="${cart.imageUrl}"
+                                        <img src="${product.imageUrl}"
                                       class="img-fluid rounded-3" alt="Product-image">
                                     </div>
                                   
@@ -54,7 +56,7 @@ function displayProducts(products) {
                                         <i class="fas fa-minus"></i>
                                         </button>
                     
-                                        <input id="form1" min="0" name="quantity" value="2" type="number"
+                                        <input id="form1" min="0" name="quantity" value="1" type="number"
                                         class="form-control form-control-sm" />
                     
                                         <button class="btn btn-link px-2"
@@ -62,8 +64,12 @@ function displayProducts(products) {
                                         </button>
                                     </div>
                                   <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 class="mb-0">${cart.price}</h5>
+                                    <h5 class="mb-0">$${product.price}</h5>
                                   </div>
+                                  <form action="/cart/delete-item" method="post">
+                                    <input type="hidden" name="product" value="${product.id}" />
+                                    <div id="delete-btn" class="btn btn-danger">Delete item</button>
+                                  </form>
                                   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                   <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
                                   </div>
@@ -76,6 +82,8 @@ function displayProducts(products) {
         shoppingCart.innerHTML = result;
     });
 };
+
+
 function sumProductPrices(products) {
   let totalPrice = 0;
 
