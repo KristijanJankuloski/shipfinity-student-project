@@ -25,13 +25,13 @@ let cart = [{"id": 2,
 "description": "Turn any device into a smart device with this easy-to-use smart plug.",
 "price": 24.99,
 "imageUrl": "#",
-"category": "plug"},
-{"id": 2,
-"name": "Smart Plug",
-"description": "Turn any device into a smart device with this easy-to-use smart plug.",
-"price": 24.99,
-"imageUrl": "#",
 "category": "plug"}];
+// {"id": 2,
+// "name": "Smart Plug",
+// "description": "Turn any device into a smart device with this easy-to-use smart plug.",
+// "price": 24.99,
+// "imageUrl": "#",
+// "category": "plug"}];
 
 // cart = getCart();
 
