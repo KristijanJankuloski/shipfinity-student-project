@@ -25,13 +25,13 @@ let cart = [{"id": 2,
 "description": "Turn any device into a smart device with this easy-to-use smart plug.",
 "price": 24.99,
 "imageUrl": "#",
+"category": "plug"},
+{"id": 2,
+"name": "Smart Plug",
+"description": "Turn any device into a smart device with this easy-to-use smart plug.",
+"price": 24.99,
+"imageUrl": "#",
 "category": "plug"}];
-// {"id": 2,
-// "name": "Smart Plug",
-// "description": "Turn any device into a smart device with this easy-to-use smart plug.",
-// "price": 24.99,
-// "imageUrl": "#",
-// "category": "plug"}];
 
 // cart = getCart();
 
@@ -56,8 +56,8 @@ function displayProducts(products) {
                                         <i class="fas fa-minus"></i>
                                         </button>
                     
-                                        <input id="form1" min="0" name="quantity" value="1" type="number"
-                                        class="form-control form-control-sm" />
+                                        <input min="0" name="quantity" value="1" type="number"
+                                        class="form-control form-control-sm" onChange="quantityChange()"/>
                     
                                         <button class="btn btn-link px-2"
                                         <i class="fas fa-plus"></i>
@@ -77,10 +77,10 @@ function displayProducts(products) {
                             </div>
             </div>
         </div>
-
         `;
-        shoppingCart.innerHTML = result;
-    });
+
+      });
+      shoppingCart.innerHTML = result;
 };
 
 
@@ -101,9 +101,7 @@ totalCartBtn.innerHTML = totalPrice;
 
 displayProducts(cart);
 
-
-
-clearCartBtn.addEventListener('click', deleteById);
+clearCartBtn.addEventListener('click', () => setCart([]));
 
 
 
