@@ -1,9 +1,6 @@
 import { addToCart } from "../helpers/session_cart.js";
 const cardComponent = document.createElement('div');
 
-
-
-
 function productCard(Product){
 
   function showDetails(Id){
@@ -20,7 +17,6 @@ cardComponent.innerHTML = `
   <img src="${Product.imageUrl}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${Product.name}</h5>
-    <p class="card-text">${Product.description}</p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Category : ${Product.category}</li>
