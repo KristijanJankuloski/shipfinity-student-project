@@ -1,5 +1,5 @@
-@import './header.css';
-@import './footer.css';
+@import '/styles/header.css';
+@import '/styles/footer.css';
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
 
@@ -165,6 +165,7 @@ p {
   height: 450px;
   perspective: 2000px;
   perspective-origin: top;
+  overflow-x: hidden;
 }
 
 .card-carousel .button-spin {
@@ -282,14 +283,14 @@ p {
 
 
 /* --------------------------- */
-.container {
+/* .container {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
+} */
 
 .slider {
   height: 500px;
