@@ -1,6 +1,5 @@
-import headerContainer from "../../components/header.js";
-import footerContainer from "../../components/footer.js";
-import { getCart, deleteById, setCart } from "../../helpers/session_cart.js";
+import headerContainer from '../../components/header.js';
+import footerContainer from '../../components/footer.js';
 
 document.getElementById("header").appendChild(headerContainer);
 document.getElementById("footer").appendChild(footerContainer);
@@ -20,7 +19,6 @@ function GetToCheckoutPage(){
   location.href = "checkout.html";
 }
 proceedToPayBtn.addEventListener("click", GetToCheckoutPage);
-
 
 let cart = [{"id": 2,
 "name": "Smart Plug",
@@ -104,13 +102,4 @@ function renderProducts(cart) {
 renderProducts(cart);
 
 // deleteBtn.addEventListener('click', deleteById);
-
-
-
-// renderProducts(updatedCart);
-
-
-
-     
-
 console.log("Hello!");
