@@ -9,16 +9,18 @@ const itemContainer = document.getElementById("itemsContainer");
 const shoppingCart = document.getElementById("shoppingCart");
 const clearCartBtn = document.querySelector('.clear-cart');
 const totalCartBtn = document.querySelector('.cart-total');
-const quantityBtn = document.querySelector('.px-2');
+const deleteBtn = document.querySelector('#delete-btn');
+
 
 
 
 let proceedToPayBtn = document.getElementById('proceedToPay');
 
 function GetToCheckoutPage(){
-  window.location.href = "checkout.html";
+  location.href = "checkout.html";
 }
 proceedToPayBtn.addEventListener("click", GetToCheckoutPage);
+
 
 let cart = [{"id": 2,
 "name": "Smart Plug",
@@ -26,178 +28,89 @@ let cart = [{"id": 2,
 "price": 24.99,
 "imageUrl": "#",
 "category": "plug"},
-{"id": 2,
+{"id": 3,
 "name": "Smart Plug",
 "description": "Turn any device into a smart device with this easy-to-use smart plug.",
 "price": 24.99,
 "imageUrl": "#",
 "category": "plug"}];
 
-// cart = getCart();
+cart = cart.map(product => {
+  return {
+    ...product,
+    numberOfUnits: 1
+  };
+})
 
-//display products
-function displayProducts(products) {
-    console.log(products);
-    let result = '';
-    cart.forEach(product =>{
-        result += `
-        <div id="itemsContainer" class="text-center">
-            <div class="card rounded-3 mb-4" id="shoppingCart">
-                          <div class="card-body p-4">
-                                <div class="row d-flex justify-content-between align-items-center">
-                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img src="${product.imageUrl}"
-                                      class="img-fluid rounded-3" alt="Product-image">
-                                    </div>
-                                  
-                                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                        <button class="btn btn-link px-2"
-                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                        <i class="fas fa-minus"></i>
-                                        </button>
-                    
-                                        <input min="0" name="quantity" value="1" type="number"
-                                        class="form-control form-control-sm" onChange="quantityChange()"/>
-                    
-                                        <button class="btn btn-link px-2"
-                                        <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                  <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 class="mb-0">$${product.price}</h5>
-                                  </div>
-                                  <form action="/cart/delete-item" method="post">
-                                    <input type="hidden" name="product" value="${product.id}" />
-                                    <div id="delete-btn" class="btn btn-danger">Delete item</button>
-                                  </form>
-                                  <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                  <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                  </div>
-                                </div>
-                            </div>
-            </div>
-        </div>
-        `;
-
-      });
-      shoppingCart.innerHTML = result;
-};
-
-
-function sumProductPrices(products) {
+function sumProductPrices(){
   let totalPrice = 0;
-
-  for (let i = 0; i < cart.length; i++) {
-    totalPrice += products[i].price;
-  }
-
-  return totalPrice;
+  
+  cart.forEach(product => {
+    totalPrice += product.price * product.numberOfUnits;
+  })
+  totalCartBtn.innerHTML = totalPrice.toFixed(2);
 }
 
-const totalPrice = sumProductPrices(cart);
-console.log(totalPrice); 
-totalCartBtn.innerHTML = totalPrice;
+sumProductPrices(cart);
 
-
-displayProducts(cart);
-
-clearCartBtn.addEventListener('click', () => setCart([]));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// getProducts().forEach(product => {
-//     console.log(product);
-//     itemsContainer.innerHTML += '';
-//     const newProduct = productCard(product);
-//     itemsContainer.appendChild(newProduct);
-//   });
-
-// shoppingCard.innerHTML = `
-// <div class="card rounded-3 mb-4">
-//             <div class="card-body p-4">
-//                 <div class="row d-flex justify-content-between align-items-center">
-//                   <div class="col-md-2 col-lg-2 col-xl-2">
-//                     <img
-//                       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-//                       class="img-fluid rounded-3" alt="Cotton T-shirt">
-//                   </div>
-                  
-//                   <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-//                     <button class="btn btn-link px-2"
-//                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-//                       <i class="fas fa-minus"></i>
-//                     </button>
+function changeNumberOfUnits(action, id){
+  cart = cart.map((product) =>{
+    if (product.id != id) {
+      return product;
+    }
+    const {numberOfUnits} = product;
+    const updatedNumberOfUnits = action === "plus"
+    ?numberOfUnits + 1 
+    : numberOfUnits -1;
+     
     
-//                     <input id="form1" min="0" name="quantity" value="2" type="number"
-//                       class="form-control form-control-sm" />
+    return {
+      ...product,
+      numberOfUnits : Math.max(1, updatedNumberOfUnits),
+    };
     
-//                     <button class="btn btn-link px-2"
-//                       onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-//                       <i class="fas fa-plus"></i>
-//                     </button>
-//                   </div>
-//                   <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-//                     <h5 class="mb-0">${Product.price}</h5>
-//                   </div>
-//                   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-//                     <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-//                   </div>
-//                 </div>
-//             </div>
-// </div>
-// `;
+  });
+  renderProducts(cart);
+  sumProductPrices(cart);
+  
+};
+window.changeNumberOfUnits = changeNumberOfUnits;
 
-// function getCardProducts() {
-//   let products = [];
-//   for (let item of shoppingCard) {
-//     let product = {
-//       name: item.product,
-//       quantity: item.quantity,
-//       price: item.price,
-//     };
-//     products.push(product);
-//   }
-//   return products;
-// }
 
-// getCardProducts();
+function renderProducts(cart) {
+  shoppingCart.innerHTML = "";
+  cart.forEach((product) =>{
+    shoppingCart.innerHTML += `
+    <div class="cart-item">
+      <div class="item-img>
+        <img src="${product.imageUrl}" alt="${product.name}">
+        <h3>${product.name}</h3>
+      </div>
+      <div class="delete-btn">Delete</div>
+      <div class="unit-price">
+        <h2><small>$${product.price}</small></h2>
+      </div>
+      <div class="d-flex justify-content-center units flex-container">
+        <div class="btn minus" onclick="changeNumberOfUnits('minus', ${product.id})">-</div>
+        <div class="number">${product.numberOfUnits}</div>
+        <div class="btn plus" onclick="changeNumberOfUnits('plus', ${product.id})">+</div>
+      </div>
+    </div>
+    `
+  })
+}
 
-// proceedToPay.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   window.location.href = "checkout.html";
-// });
+
+renderProducts(cart);
+
+// deleteBtn.addEventListener('click', deleteById);
+
+
+
+// renderProducts(updatedCart);
+
+
+
+     
 
 console.log("Hello!");

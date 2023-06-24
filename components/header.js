@@ -33,7 +33,7 @@ headerContainer.innerHTML = `
           </li>
         </ul>
         <form class="d-flex" action="${basePath}/search.html" method="get">
-          <button class="btn btn-success shopping-cart-button"><img class="shopping-cart" src="${basePath}/assets/images/shopping-cart.svg"/></button>
+          <button class="btn btn-success shopping-cart-button" id="shopping-cart-btn"><img class="shopping-cart" src="${basePath}/assets/images/shopping-cart.svg"/></button>
           <input class="form-control me-2" class="class-button"type="text" placeholder="Search" aria-label="Search" name="search">
           <input class="btn btn-primary" type="submit" value="Search">
         </form>
