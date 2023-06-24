@@ -83,10 +83,27 @@
                         <label>
                             <input type="checkbox" checked="checked" name="shippingAddress"> Shipping address same as billing address
                         </label>
-                        <input type="submit" class="btn" value="Continue to checkout" onsubmit="printMessageAfterCheckout()">
+                        <button type="button" class="btn-submitCheckout" data-bs-toggle="modal" data-bs-target="#checkoutModal"> Continue to checkout</button>
                     </form>
                 </div>
             </div>
+
+            <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkoutModalLabel">Shipfinity</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Order received succsesfully!
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div class="col-25">
                 <div class="cart-container">
