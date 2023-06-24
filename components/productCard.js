@@ -19,7 +19,6 @@ cardComponent.innerHTML = `
     <h5 class="card-title">${Product.name}</h5>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Category : ${Product.category}</li>
     <li class="list-group-item">Price : ${Product.price}$</li>
   </ul>
   <div class="card-body">
