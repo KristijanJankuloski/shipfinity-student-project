@@ -19,10 +19,15 @@ function renderResults(results) {
     }
     results.forEach(result => {
       const resultContainer = document.createElement("div");
+      resultContainer.classList="d-flex";
       resultContainer.innerHTML = `
-        <h2>${result.name}</h2>
-        <img src="${result.imageUrl}" alt="${result.name}">
-        <p>${result.description}</p>
+      <div class="card" style="width: 18rem;">
+      <img src="${result.imageUrl}" class="card-img-top" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">${result.name}</h5>
+        <p class="card-text">${result.description}</p>
+      </div>
+    </div>
       `;
       searchResultsDiv.appendChild(resultContainer);
     });
@@ -35,3 +40,7 @@ function search() {
   renderResults(results);
 }
 search();
+
+// <h2>${result.name}</h2>
+// <img src="${result.imageUrl}" alt="${result.name}">
+// <p>${result.description}</p>
