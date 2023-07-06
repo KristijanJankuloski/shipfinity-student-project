@@ -1,13 +1,9 @@
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+main {
+  min-height: 75vh;
 }
-html {
-    font-size: 62.5%;
 
+.shopping-cart-button{
+  margin-right: 10px;
 }
 
 .btn-lg{
