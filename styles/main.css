@@ -38,6 +38,17 @@ p {
 }
 
 
+.search-img {
+  max-width: 200px;
+}
+
+.search-card {
+  border: solid 1px rgb(102, 102, 102);
+  padding: 8px;
+  border-radius: 8px;
+
+}
+
 .c-item {
   height: 480px;
 }

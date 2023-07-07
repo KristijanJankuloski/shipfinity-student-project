@@ -1,6 +1,6 @@
 import headerContainer from '../../components/header.js';
 import footerContainer from '../../components/footer.js';
-import { deleteById, getCart } from '../../helpers/session_cart.js';
+import { deleteById, getCart, setCart } from '../../helpers/session_cart.js';
 
 
 document.getElementById("header").appendChild(headerContainer);
@@ -11,10 +11,6 @@ const clearCartBtn = document.querySelector('.clear-cart');
 const totalCartBtn = document.querySelector('.cart-total');
 const deleteBtn = document.getElementById('deleteBtn');
 
-clearCartBtn.addEventListener('click', () => {
-  shoppingCart.innerHTML = getCart();
-})
-
 
 
 let proceedToPayBtn = document.getElementById('proceedToPay');
@@ -23,19 +19,26 @@ function GetToCheckoutPage(){
   location.href = "checkout.html";
 }
 proceedToPayBtn.addEventListener("click", GetToCheckoutPage);
+let cart = getCart();
+// let cart = [{"id": 2,
+// "name": "Smart Plug",
+// "description": "Turn any device into a smart device with this easy-to-use smart plug.",
+// "price": 24.99,
+// "imageUrl": "#",
+// "category": "plug"},
+// {"id": 3,
+// "name": "Smart Plug",
+// "description": "Turn any device into a smart device with this easy-to-use smart plug.",
+// "price": 24.99,
+// "imageUrl": "#",
+// "category": "plug"}];
 
-let cart = [{"id": 2,
-"name": "Smart Plug",
-"description": "Turn any device into a smart device with this easy-to-use smart plug.",
-"price": 24.99,
-"imageUrl": "#",
-"category": "plug"},
-{"id": 3,
-"name": "Smart Plug",
-"description": "Turn any device into a smart device with this easy-to-use smart plug.",
-"price": 24.99,
-"imageUrl": "#",
-"category": "plug"}];
+clearCartBtn.addEventListener('click', () => {
+  setCart([]);
+  cart = getCart();
+  sumProductPrices();
+  renderProducts(cart);
+})
 
 cart = cart.map(product => {
   return {
@@ -83,6 +86,11 @@ renderProducts(cart);
 
 
 function renderProducts(cart) {
+  console.log(cart);
+  if(cart.length === 0){
+    shoppingCart.innerHTML = `<div class="container"><h2 class="display-4">You have no items in your cart</h2></div>`;
+    return;
+  }
   shoppingCart.innerHTML = "";
   cart.forEach((product) =>{
     shoppingCart.innerHTML += `

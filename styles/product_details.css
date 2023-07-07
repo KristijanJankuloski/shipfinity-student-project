@@ -5,9 +5,8 @@
   gap: 20px;
 }
 
-#product-details img {
-  max-width: 100%;
-  height: auto;
+.details-img {
+  max-width: 500px;
 }
 
 #product-details h2 {
